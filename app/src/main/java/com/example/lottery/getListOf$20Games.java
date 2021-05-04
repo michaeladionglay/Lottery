@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class getListOf$1Games extends AsyncTask<Void, Void, Void> {
+public class getListOf$20Games extends AsyncTask<Void, Void, Void> {
 
-    List<String> $1Games = new ArrayList<String>();
+    List<String> $20PlusGames = new ArrayList<String>();
     StringBuilder ListOfGamesInTextView = new StringBuilder();
 
     @Override
@@ -26,8 +26,8 @@ public class getListOf$1Games extends AsyncTask<Void, Void, Void> {
 
                 String game = row.select("td.unclaimed-prizes-table__cell:nth-of-type(1)").text();
 
-                if (game.contains("($1)")){
-                    $1Games.add(game);
+                if (game.contains("($20)") || game.contains("($25)") || game.contains("($30)")){
+                    $20PlusGames.add(game);
                     ListOfGamesInTextView.append(game+"\n");
                 }
             }
