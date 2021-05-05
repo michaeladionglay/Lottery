@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
         Games = findViewById(R.id.gameList);
 
+        new getAllGames().execute();
+
         Button getListOf$1Games = findViewById(R.id.getListOf1Games);
         Button getListOf$2Games = findViewById(R.id.getListOf2Games);
         Button getListOf$3Games = findViewById(R.id.getListOf3Games);
