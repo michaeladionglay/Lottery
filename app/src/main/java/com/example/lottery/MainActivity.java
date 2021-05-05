@@ -1,6 +1,7 @@
 package com.example.lottery;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,12 +12,14 @@ public class MainActivity extends AppCompatActivity {
 
     static TextView Games;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Games = findViewById(R.id.gameList);
+        Games.setMovementMethod(new ScrollingMovementMethod());
 
         new getAllGames().execute();
 
