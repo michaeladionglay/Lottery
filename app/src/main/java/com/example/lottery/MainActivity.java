@@ -131,6 +131,4 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
 }
