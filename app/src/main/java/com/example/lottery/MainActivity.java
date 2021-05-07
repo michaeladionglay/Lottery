@@ -12,7 +12,6 @@ public class MainActivity extends AppCompatActivity {
 
     static TextView Games;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,37 +32,37 @@ public class MainActivity extends AppCompatActivity {
         getListOf$1Games.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new getListOf$1Games().execute();
+                new getGameType().execute("($1)");
             }
         });
         getListOf$2Games.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new getListOf$2Games().execute();
+                new getGameType().execute("($2)");
             }
         });
         getListOf$3Games.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new getListOf$3Games().execute();
+                new getGameType().execute("($3)");
             }
         });
         getListOf$5Games.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new getListOf$5Games().execute();
+                new getGameType().execute("($5)");
             }
         });
         getListOf$10Games.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new getListOf$10Games().execute();
+                new getGameType().execute("($10)");
             }
         });
         getListOf$20Games.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new getListOf$20Games().execute();
+                new getGameType().execute("($20)");
             }
         });
     }
