@@ -35,11 +35,4 @@ public class getAllGames extends AsyncTask<Void, Void, Void> {
         }
         return null;
     }
-
-    @Override
-    protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
-
-        MainActivity.Games.setText(String.valueOf(ListOfGamesInTextView));
-    }
 }
