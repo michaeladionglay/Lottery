@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class TicketsAdapter extends RecyclerView.Adapter<MyViewHolder> {
+public class GamesAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
 
-    private List<Ticket> ticketList;
+    private List<Game> gameList;
     private MainActivity mainAct;
 
-    TicketsAdapter(List<Ticket> tckList, MainActivity ma) {
-        this.ticketList = tckList;
+    GamesAdapter(List<Game> gmeList, MainActivity ma) {
+        this.gameList = gmeList;
         mainAct = ma;
     }
 
@@ -37,9 +37,9 @@ public class TicketsAdapter extends RecyclerView.Adapter<MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        Ticket ticket = ticketList.get(position);
+        Game game = gameList.get(position);
 
-        holder.ticketName.setText(ticket.getName());
+        holder.ticketName.setText(game.getName());
         //holder.empId.setText(String.format(Locale.getDefault(), "%d", employee.getEmpId()));
         //holder.department.setText(employee.getDepartment());
         //holder.dateTime.setText(new Date().toString());
@@ -47,7 +47,8 @@ public class TicketsAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        return ticketList.size();
+        return gameList.size();
     }
 
 }
+

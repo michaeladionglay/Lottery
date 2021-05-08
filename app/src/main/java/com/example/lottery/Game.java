@@ -1,5 +1,7 @@
 package com.example.lottery;
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 import java.util.List;
 
@@ -94,4 +96,11 @@ public class Game {
     public Enum getGameType(){
         return this.GameType;
     }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return Name;
+    }
 }
+
