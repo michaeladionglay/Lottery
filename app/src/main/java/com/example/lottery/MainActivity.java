@@ -1,29 +1,21 @@
 package com.example.lottery;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
 
@@ -54,44 +46,13 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        setContentView(R.layout.activity_game);
         int pos = recyclerView.getChildLayoutPosition(v);
         Game game = gameList.get(pos);
 
-        TextView gameName = findViewById(R.id.gameName);
-        TextView gamePrice = findViewById(R.id.gamePriceTextEntry);
-        TextView gameNumber = findViewById(R.id.gameNumberTextEntry);
-        TableLayout prizeTable = findViewById(R.id.prizeTable);
+        Intent intent = new Intent(this, GameDetails.class);
+        intent.putExtra("GameDetails", game);
+        startActivity(intent);
 
-        gameName.setText(game.Name);
-        gamePrice.setText(game.Price);
-        gameNumber.setText(game.GameNumber.toString());
-
-        int rowNumber = 1;
-
-        for (Double prizeValue : game.getPrizeValues()) {
-            TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(rowNumber);
-            TextView cell = (TextView) prizeTableRow.getChildAt(0);
-            cell.setText(prizeValue.toString());
-            rowNumber++;
-        }
-        rowNumber = 1;
-
-        for (Double totalAvailablePrizes : game.getTotalAvailablePrizes()) {
-            TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(rowNumber);
-            TextView cell = (TextView) prizeTableRow.getChildAt(1);
-            cell.setText(totalAvailablePrizes.toString());
-            rowNumber++;
-        }
-
-        rowNumber = 1;
-
-        for (Double totalUnclaimedPrizes : game.getUnclaimedPrizes()) {
-            TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(rowNumber);
-            TextView cell = (TextView) prizeTableRow.getChildAt(2);
-            cell.setText(totalUnclaimedPrizes.toString());
-            rowNumber++;
-        }
     }
 
     @Override
