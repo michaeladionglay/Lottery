@@ -6,6 +6,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,11 +53,45 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     }
 
     @Override
-    public void onClick(View v) {  // click listener called by ViewHolder clicks
-        //Right now this just confirms we are clicking on correct item. Will use this to transfer data into next activity
+    public void onClick(View v) {
+        setContentView(R.layout.activity_game);
         int pos = recyclerView.getChildLayoutPosition(v);
-        Game m = gameList.get(pos);
-        Toast.makeText(v.getContext(), m.toString(), Toast.LENGTH_SHORT).show();
+        Game game = gameList.get(pos);
+
+        TextView gameName = findViewById(R.id.gameName);
+        TextView gamePrice = findViewById(R.id.gamePriceTextEntry);
+        TextView gameNumber = findViewById(R.id.gameNumberTextEntry);
+        TableLayout prizeTable = findViewById(R.id.prizeTable);
+
+        gameName.setText(game.Name);
+        gamePrice.setText(game.Price);
+        gameNumber.setText(game.GameNumber.toString());
+
+        int rowNumber = 1;
+
+        for (Double prizeValue : game.getPrizeValues()) {
+            TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(rowNumber);
+            TextView cell = (TextView) prizeTableRow.getChildAt(0);
+            cell.setText(prizeValue.toString());
+            rowNumber++;
+        }
+        rowNumber = 1;
+
+        for (Double totalAvailablePrizes : game.getTotalAvailablePrizes()) {
+            TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(rowNumber);
+            TextView cell = (TextView) prizeTableRow.getChildAt(1);
+            cell.setText(totalAvailablePrizes.toString());
+            rowNumber++;
+        }
+
+        rowNumber = 1;
+
+        for (Double totalUnclaimedPrizes : game.getUnclaimedPrizes()) {
+            TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(rowNumber);
+            TextView cell = (TextView) prizeTableRow.getChildAt(2);
+            cell.setText(totalUnclaimedPrizes.toString());
+            rowNumber++;
+        }
     }
 
     @Override
@@ -107,132 +144,3 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         }
     }
 }
-
-
-
-//Leaving this commented code here just in case we need to easily review it in the future.
-//For the most part, this should all be ignored.
-/**
-
- private class getAllGames extends AsyncTask<Void, Void, Void> {
-
-@Override
-protected Void doInBackground(Void... params) {
-
-try {
-Document doc = Jsoup.connect("https://www.illinoislottery.com/about-the-games/unpaid-instant-games-prizes").get();
-
-for (Element row : doc.select(
-"table.unclaimed-prizes-table.unclaimed-prizes-table--itg tr")) {
-
-String lottoName = row.select("td.unclaimed-prizes-table__cell:nth-of-type(1)").text();
-String lottoPrice = row.select("td.unclaimed-prizes-table__cell:nth-of-type(2)").text();
-String lottoGameNum = row.select("td.unclaimed-prizes-table__cell:nth-of-type(3)").text();
-String lottoPrizeVal = row.select("td.unclaimed-prizes-table__cell:nth-of-type(4)").text();
-String lottoTotalAvailPrizes = row.select("td.unclaimed-prizes-table__cell:nth-of-type(5)").text();
-String lottoTotalUnclaimedPrizes = row.select("td.unclaimed-prizes-table__cell:nth-of-type(6)").text();
-
-String gameString = row.select("td.unclaimed-prizes-table__cell:nth-of-type(1)").text();
-//skip blank web scrapes
-if (lottoName!="") {
-
-Game game = new Game();
-//name
-game.setName(lottoName);
-//price
-game.setPrice(lottoPrice);
-//Game Number
-game.setGameNumber(Double.parseDouble(lottoGameNum.split("\\(")[0]));
-//Prize Values
-List<String> stringPrizeValList = Arrays.asList(lottoPrizeVal.split(" "));
-List<Double> intPrizeValList = Conversion.convertLstStringToLstDouble_dollar(stringPrizeValList);
-game.setPrizeValues(intPrizeValList);
-//Total Avail Prizes
-List<String> stringTotalAvailPrizesList = Arrays.asList(lottoTotalAvailPrizes.split(" "));
-List<Double> doubleTotalAvailPrizesList = Conversion.convertLstStringToLstDouble(stringTotalAvailPrizesList);
-game.setTotalAvailablePrizes(doubleTotalAvailPrizesList);
-//Total Unclaimed Prizes
-List<String> stringTotalUnclaimedPrizesList = Arrays.asList(lottoTotalUnclaimedPrizes.split(" "));
-List<Double> doubleTotalUnclaimedPrizesList = Conversion.convertLstStringToLstDouble(stringTotalUnclaimedPrizesList);
-game.setUnclaimedPrizes(doubleTotalUnclaimedPrizesList);
-gameList.add(game);
-}
-}
-
-} catch (IOException | ParseException e) {
-e.printStackTrace();
-}
-return null;
-}
-
-@Override
-protected void onPostExecute(Void aVoid) {
-super.onPostExecute(aVoid);
-//Notify Dataset change otherwise it won't display
-mAdapter.notifyDataSetChanged();
-
-}
-}
-
- **/
-
-/**
- public class getGameType extends AsyncTask<Void, Void, Void> {
-
-@Override
-protected Void doInBackground(Void... params) {
-
-try {
-Document doc = Jsoup.connect("https://www.illinoislottery.com/about-the-games/unpaid-instant-games-prizes").get();
-
-for (Element row : doc.select(
-"table.unclaimed-prizes-table.unclaimed-prizes-table--itg tr")) {
-
-String lottoName = row.select("td.unclaimed-prizes-table__cell:nth-of-type(1)").text();
-String lottoPrice = row.select("td.unclaimed-prizes-table__cell:nth-of-type(2)").text();
-String lottoGameNum = row.select("td.unclaimed-prizes-table__cell:nth-of-type(3)").text();
-String lottoPrizeVal = row.select("td.unclaimed-prizes-table__cell:nth-of-type(4)").text();
-String lottoTotalAvailPrizes = row.select("td.unclaimed-prizes-table__cell:nth-of-type(5)").text();
-String lottoTotalUnclaimedPrizes = row.select("td.unclaimed-prizes-table__cell:nth-of-type(6)").text();
-
-String gameString = row.select("td.unclaimed-prizes-table__cell:nth-of-type(1)").text();
-
-if (lottoName.contains("($"+X+")")){
-Game game = new Game();
-//name
-game.setName(lottoName);
-//price
-game.setPrice(lottoPrice);
-//Game Number
-game.setGameNumber(Double.parseDouble(lottoGameNum.split("\\(")[0]));
-//Prize Values
-List<String> stringPrizeValList = Arrays.asList(lottoPrizeVal.split(" "));
-List<Double> intPrizeValList = Conversion.convertLstStringToLstDouble_dollar(stringPrizeValList);
-game.setPrizeValues(intPrizeValList);
-//Total Avail Prizes
-List<String> stringTotalAvailPrizesList = Arrays.asList(lottoTotalAvailPrizes.split(" "));
-List<Double> doubleTotalAvailPrizesList = Conversion.convertLstStringToLstDouble(stringTotalAvailPrizesList);
-game.setTotalAvailablePrizes(doubleTotalAvailPrizesList);
-//Total Unclaimed Prizes
-List<String> stringTotalUnclaimedPrizesList = Arrays.asList(lottoTotalUnclaimedPrizes.split(" "));
-List<Double> doubleTotalUnclaimedPrizesList = Conversion.convertLstStringToLstDouble(stringTotalUnclaimedPrizesList);
-game.setUnclaimedPrizes(doubleTotalUnclaimedPrizesList);
-gameList.add(game);
-
-}
-}
-} catch (IOException | ParseException e) {
-e.printStackTrace();
-}
-return null;
-}
-
-@Override
-protected void onPostExecute(Void aVoid) {
-super.onPostExecute(aVoid);
-
-mAdapter.notifyDataSetChanged();
-}
-}
- **/
-

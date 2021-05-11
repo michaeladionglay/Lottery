@@ -1,6 +1,7 @@
 package com.example.lottery;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -57,7 +58,6 @@ public class getAllGames extends AsyncTask<Void, Void, Void> {
                     MainActivity.gameList.add(game);
                 }
             }
-
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -69,7 +69,6 @@ public class getAllGames extends AsyncTask<Void, Void, Void> {
         super.onPostExecute(aVoid);
         //Notify Dataset change otherwise it won't display
         MainActivity.mAdapter.notifyDataSetChanged();
-
     }
 }
 
