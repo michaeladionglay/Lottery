@@ -2,10 +2,11 @@ package com.example.lottery;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Game {
+public class Game implements Serializable {
     String Name;
     String Price;
     Double GameNumber;

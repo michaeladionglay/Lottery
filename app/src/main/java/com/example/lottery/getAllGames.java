@@ -71,34 +71,3 @@ public class getAllGames extends AsyncTask<Void, Void, Void> {
         MainActivity.mAdapter.notifyDataSetChanged();
     }
 }
-
-//Leaving this commented code here just in case we need to easily review it in the future.
-//For the most part, this should all be ignored.
-/**
-public class getAllGames extends AsyncTask<Void, Void, Void> {
-
-    List<String> AllGames = new ArrayList<String>();
-    StringBuilder ListOfGamesInTextView = new StringBuilder();
-
-    @Override
-    protected Void doInBackground(Void... params) {
-
-        try {
-            Document doc = Jsoup.connect("https://www.illinoislottery.com/about-the-games/unpaid-instant-games-prizes").get();
-
-            for (Element row : doc.select(
-                    "table.unclaimed-prizes-table.unclaimed-prizes-table--itg tr")) {
-
-                String game = row.select("td.unclaimed-prizes-table__cell:nth-of-type(1)").text();
-
-                    AllGames.add(game);
-                    ListOfGamesInTextView.append(game+"\n");
-
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-}
-**/
