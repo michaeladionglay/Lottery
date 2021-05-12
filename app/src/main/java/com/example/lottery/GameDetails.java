@@ -28,14 +28,14 @@ public class GameDetails extends AppCompatActivity {
 
         gameName.setText(game.Name);
         gamePrice.setText(game.Price);
-        gameNumber.setText(game.GameNumber.toString());
+        gameNumber.setText(Conversion.removeTrailingZeros(game.GameNumber.toString()));
 
         int rowNumber = 1;
 
         for (Double prizeValue : game.getPrizeValues()) {
             TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(rowNumber);
             TextView cell = (TextView) prizeTableRow.getChildAt(0);
-            cell.setText(prizeValue.toString());
+            cell.setText(Conversion.removeTrailingZeros(prizeValue.toString()));
             rowNumber++;
         }
 
@@ -44,7 +44,7 @@ public class GameDetails extends AppCompatActivity {
         for (Double totalAvailablePrizes : game.getTotalAvailablePrizes()) {
             TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(rowNumber);
             TextView cell = (TextView) prizeTableRow.getChildAt(1);
-            cell.setText(totalAvailablePrizes.toString());
+            cell.setText(Conversion.removeTrailingZeros(totalAvailablePrizes.toString()));
             rowNumber++;
         }
 
@@ -53,7 +53,7 @@ public class GameDetails extends AppCompatActivity {
         for (Double totalUnclaimedPrizes : game.getUnclaimedPrizes()) {
             TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(rowNumber);
             TextView cell = (TextView) prizeTableRow.getChildAt(2);
-            cell.setText(totalUnclaimedPrizes.toString());
+            cell.setText(Conversion.removeTrailingZeros(totalUnclaimedPrizes.toString()));
             rowNumber++;
         }
     }

@@ -31,4 +31,8 @@ public class Conversion {
         }
         return doubleList;
     }
+
+    public static String removeTrailingZeros(String num){
+        return num.contains(".") ? num.toString().replaceAll("0*$","").replaceAll("\\.$","") : num.toString();
+    }
 }
