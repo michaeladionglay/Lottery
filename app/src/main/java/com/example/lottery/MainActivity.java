@@ -2,6 +2,7 @@ package com.example.lottery;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.io.Serializable;
 
@@ -34,8 +38,14 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         mAdapter = new GamesAdapter(gameList, this);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        TextView dateTime = findViewById(R.id.dateTime);
 
         new getAllGames().execute();
+
+        long date = System.currentTimeMillis();
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM MM dd, yyyy h:mm a");
+        String dateString = sdf.format(date);
+        dateTime.setText(dateString);
     }
 
     @Override
@@ -52,7 +62,6 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         Intent intent = new Intent(this, GameDetails.class);
         intent.putExtra("GameDetails", game);
         startActivity(intent);
-
     }
 
     @Override
@@ -62,6 +71,12 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
             case R.id.menu_all:
                 gameList.clear();
                 new getAllGames().execute();
+
+                long date = System.currentTimeMillis();
+                TextView dateTime = findViewById(R.id.dateTime);
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM MM dd, yyyy h:mm a");
+                String dateString = sdf.format(date);
+                dateTime.setText(dateString);
                 return true;
 
             case R.id.menu_1_dollar:
