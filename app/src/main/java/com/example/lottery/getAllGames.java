@@ -9,10 +9,10 @@ import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
-
 
 public class getAllGames extends AsyncTask<Void, Void, Void> {
 
@@ -56,6 +56,8 @@ public class getAllGames extends AsyncTask<Void, Void, Void> {
                     List<Double> doubleTotalUnclaimedPrizesList = Conversion.convertLstStringToLstDouble(stringTotalUnclaimedPrizesList);
                     game.setUnclaimedPrizes(doubleTotalUnclaimedPrizesList);
                     MainActivity.gameList.add(game);
+                    MainActivity.allGameList.add(game);
+                    //ListOfAllGamesHolder.allGameList.add(game);
                 }
             }
         } catch (IOException | ParseException e) {
@@ -69,5 +71,6 @@ public class getAllGames extends AsyncTask<Void, Void, Void> {
         super.onPostExecute(aVoid);
         //Notify Dataset change otherwise it won't display
         MainActivity.mAdapter.notifyDataSetChanged();
+        //MainActivity.
     }
 }

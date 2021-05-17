@@ -2,6 +2,7 @@ package com.example.lottery;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,13 +14,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
 
-    public static List<Game> gameList = new ArrayList<>();  // Main content is here
+    public static List<Game> gameList = new ArrayList<>();
+    public static List<Game> allGameList = new ArrayList<>();
     private RecyclerView recyclerView; // Layout's recyclerview
     public static GamesAdapter mAdapter;
     public static String X;
@@ -34,8 +39,14 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         mAdapter = new GamesAdapter(gameList, this);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        TextView dateTime = findViewById(R.id.dateTime);
 
         new getAllGames().execute();
+
+        long date = System.currentTimeMillis();
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM MM dd, yyyy h:mm a");
+        String dateString = sdf.format(date);
+        dateTime.setText(dateString);
     }
 
     @Override
@@ -52,7 +63,6 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         Intent intent = new Intent(this, GameDetails.class);
         intent.putExtra("GameDetails", game);
         startActivity(intent);
-
     }
 
     @Override
@@ -61,43 +71,64 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         switch (item.getItemId()) {
             case R.id.menu_all:
                 gameList.clear();
+                mAdapter = new GamesAdapter(gameList, this);
+                recyclerView.setAdapter(mAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 new getAllGames().execute();
+
+                long date = System.currentTimeMillis();
+                TextView dateTime = findViewById(R.id.dateTime);
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM MM dd, yyyy h:mm a");
+                String dateString = sdf.format(date);
+                dateTime.setText(dateString);
                 return true;
 
             case R.id.menu_1_dollar:
                 X = "1";
-                gameList.clear();
-                new getGameType().execute();
+                gameList = new getGameType().filterGames();
+                mAdapter = new GamesAdapter(gameList, this);
+                recyclerView.setAdapter(mAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 return true;
 
             case R.id.menu_2_dollars:
                 X = "2";
-                gameList.clear();
-                new getGameType().execute();
+                gameList = new getGameType().filterGames();
+                mAdapter = new GamesAdapter(gameList, this);
+                recyclerView.setAdapter(mAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 return true;
 
             case R.id.menu_3_dollars:
                 X = "3";
-                gameList.clear();
-                new getGameType().execute();
+                gameList = new getGameType().filterGames();
+                mAdapter = new GamesAdapter(gameList, this);
+                recyclerView.setAdapter(mAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 return true;
 
             case R.id.menu_5_dollars:
                 X = "5";
-                gameList.clear();
-                new getGameType().execute();
+                gameList = new getGameType().filterGames();
+                mAdapter = new GamesAdapter(gameList, this);
+                recyclerView.setAdapter(mAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 return true;
 
             case R.id.menu_10_dollars:
                 X = "10";
-                gameList.clear();
-                new getGameType().execute();
+                gameList = new getGameType().filterGames();
+                mAdapter = new GamesAdapter(gameList, this);
+                recyclerView.setAdapter(mAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 return true;
 
             case R.id.menu_20_dollars:
                 X = "20";
-                gameList.clear();
-                new getGameType().execute();
+                gameList = new getGameType().filterGames();
+                mAdapter = new GamesAdapter(gameList, this);
+                recyclerView.setAdapter(mAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 return true;
 
             default:
