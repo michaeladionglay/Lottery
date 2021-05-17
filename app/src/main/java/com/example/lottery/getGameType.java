@@ -20,10 +20,20 @@ public class getGameType {
         MainActivity.gameList.clear();
         List<Game> filterGames = new ArrayList<>();
 
-        for (Game game: MainActivity.allGameList)
+        for (Game game: MainActivity.allGameList) {
             if (game.Name.contains("($" + MainActivity.X + ")")) {
                 filterGames.add(game);
             }
+        }
+
+        if (MainActivity.X == "20"){
+            for (Game game: MainActivity.allGameList) {
+                if (game.Name.contains("($25)") || game.Name.contains("($30)")){
+                    filterGames.add(game);
+                }
+            }
+        }
+
         return filterGames;
     }
 }
