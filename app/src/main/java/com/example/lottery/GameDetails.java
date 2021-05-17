@@ -29,32 +29,34 @@ public class GameDetails extends AppCompatActivity {
         gameName.setText(game.Name);
         gamePrice.setText(game.Price);
         gameNumber.setText(Conversion.removeTrailingZeros(game.GameNumber.toString()));
+        int rowCount = 0;
 
-        int rowNumber = 1;
+        for (Double prizevalue : game.getPrizeValues()) {
+            rowCount++;
+        }
 
+        int prizeValues = rowCount;
         for (Double prizeValue : game.getPrizeValues()) {
-            TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(rowNumber);
+            TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(prizeValues);
             TextView cell = (TextView) prizeTableRow.getChildAt(0);
             cell.setText(Conversion.removeTrailingZeros(prizeValue.toString()));
-            rowNumber++;
+            prizeValues--;
         }
 
-        rowNumber = 1;
-
+        int total = rowCount;
         for (Double totalAvailablePrizes : game.getTotalAvailablePrizes()) {
-            TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(rowNumber);
+            TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(total);
             TextView cell = (TextView) prizeTableRow.getChildAt(1);
             cell.setText(Conversion.removeTrailingZeros(totalAvailablePrizes.toString()));
-            rowNumber++;
+            total--;
         }
 
-        rowNumber = 1;
-
+        int unclaimed = rowCount;
         for (Double totalUnclaimedPrizes : game.getUnclaimedPrizes()) {
-            TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(rowNumber);
+            TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(unclaimed);
             TextView cell = (TextView) prizeTableRow.getChildAt(2);
             cell.setText(Conversion.removeTrailingZeros(totalUnclaimedPrizes.toString()));
-            rowNumber++;
+            unclaimed--;
         }
     }
 }
