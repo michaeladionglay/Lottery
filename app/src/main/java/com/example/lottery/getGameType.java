@@ -14,24 +14,16 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class getGameType extends AsyncTask<Void, Void, Void> {
+public class getGameType {
 
-    @Override
-    protected Void doInBackground(Void... params) {
+    protected List<Game> filterGames() {
+        MainActivity.gameList.clear();
+        List<Game> filterGames = new ArrayList<>();
 
-            for (Game game : ListOfAllGamesHolder.allGameList) {
-                if (game.Name.contains("($"+MainActivity.X+")")){
-                    //selectedGameList.add(game);
-                    MainActivity.gameList.add(game);
-                }
+        for (Game game: MainActivity.allGameList)
+            if (game.Name.contains("($" + MainActivity.X + ")")) {
+                filterGames.add(game);
             }
-        return null;
-    }
-
-    @Override
-    protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
-
-        MainActivity.mAdapter.notifyDataSetChanged();
+        return filterGames;
     }
 }

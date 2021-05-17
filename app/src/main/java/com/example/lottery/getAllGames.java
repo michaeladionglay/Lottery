@@ -56,7 +56,8 @@ public class getAllGames extends AsyncTask<Void, Void, Void> {
                     List<Double> doubleTotalUnclaimedPrizesList = Conversion.convertLstStringToLstDouble(stringTotalUnclaimedPrizesList);
                     game.setUnclaimedPrizes(doubleTotalUnclaimedPrizesList);
                     MainActivity.gameList.add(game);
-                    ListOfAllGamesHolder.allGameList.add(game);
+                    MainActivity.allGameList.add(game);
+                    //ListOfAllGamesHolder.allGameList.add(game);
                 }
             }
         } catch (IOException | ParseException e) {
