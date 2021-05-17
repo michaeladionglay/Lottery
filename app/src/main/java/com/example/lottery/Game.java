@@ -13,6 +13,9 @@ public class Game implements Serializable {
     List<Double> PrizeValues;
     List<Double> TotalAvailablePrizes;
     List<Double> UnclaimedPrizes;
+    Double Percentage_all;
+    Double Percentage_grand;
+
     Date DrawDate;
     String TicketLocation;
     Double Amount;
@@ -68,6 +71,22 @@ public class Game implements Serializable {
 
     public void setDrawDate(Date drawDate){
         this.DrawDate = drawDate;
+    }
+
+    public void setPercentage_all(Double percentage){
+        this.Percentage_all = percentage;
+    }
+
+    public Double getPercentage_all(){
+        return this.Percentage_all;
+    }
+
+    public void setPercentage_grand(Double percentage){
+        this.Percentage_grand = percentage;
+    }
+
+    public Double getPercentage_grand(){
+        return this.Percentage_grand;
     }
 
     public Date getDrawDate(){

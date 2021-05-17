@@ -10,11 +10,12 @@
         android:id="@+id/gamePriceTextEntry"
         android:layout_width="0dp"
         android:layout_height="23dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
         app:layout_constraintBottom_toTopOf="@+id/prizeTable"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gamePriceLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/gamePriceLabel"
+        app:layout_constraintVertical_bias="0.082" />
 
     <TableLayout
         android:id="@+id/prizeTable"
@@ -508,35 +509,85 @@
         android:id="@+id/gamePriceLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
         android:text="PRICE"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/prizeTable"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.215" />
 
     <TextView
         android:id="@+id/gameNumberLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
         android:text="GAME NUMBER"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/prizeTable"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.215" />
 
     <TextView
         android:id="@+id/gameNumberTextEntry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginRight="92dp"
         app:layout_constraintBottom_toTopOf="@+id/prizeTable"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gameNumberLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/gameNumberLabel"
+        app:layout_constraintVertical_bias="0.139" />
+
+    <TextView
+        android:id="@+id/gamePercentage_grand_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="208dp"
+        android:layout_marginLeft="208dp"
+        android:layout_marginTop="137dp"
+        android:layout_marginBottom="505dp"
+        android:text="GRAND WIN PERCENTAGE"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.125" />
+
+    <TextView
+        android:id="@+id/gamePercentage_all_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="136dp"
+        android:text="WIN PERCENTAGE"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/percentage_all_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="173dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/percentage_grand_entry"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="272dp"
+        android:layout_marginLeft="272dp"
+        android:layout_marginTop="184dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
