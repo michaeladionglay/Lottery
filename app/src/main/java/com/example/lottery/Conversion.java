@@ -35,4 +35,12 @@ public class Conversion {
     public static String removeTrailingZeros(String num){
         return num.contains(".") ? num.toString().replaceAll("0*$","").replaceAll("\\.$","") : num.toString();
     }
+
+    public static Double findSum(List<Double> lst){
+        double total = 0.0;
+        for (double num : lst){
+            total = total + num;
+        }
+        return total;
+    }
 }

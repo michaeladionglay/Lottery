@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.*;
 
 public class getAllGames extends AsyncTask<Void, Void, Void> {
 
@@ -55,6 +56,17 @@ public class getAllGames extends AsyncTask<Void, Void, Void> {
                     List<String> stringTotalUnclaimedPrizesList = Arrays.asList(lottoTotalUnclaimedPrizes.split(" "));
                     List<Double> doubleTotalUnclaimedPrizesList = Conversion.convertLstStringToLstDouble(stringTotalUnclaimedPrizesList);
                     game.setUnclaimedPrizes(doubleTotalUnclaimedPrizesList);
+                    //Total unclaimed prizes sum / total avail prizes sum
+                    Double TotalAvailSum = Conversion.findSum(doubleTotalAvailPrizesList);
+                    Double TotalUnclaimedSum = Conversion.findSum(doubleTotalUnclaimedPrizesList);
+                    Double percentage_all = (TotalUnclaimedSum/TotalAvailSum) * 100;
+                    game.setPercentage_all(percentage_all);
+                    //grand prize: unclaimed/total
+                    Double lastElement_TotalAvail = doubleTotalAvailPrizesList.get(doubleTotalAvailPrizesList.size() - 1);
+                    Double lastElement_TotalUnclaimed = doubleTotalUnclaimedPrizesList.get(doubleTotalUnclaimedPrizesList.size() - 1);
+                    Double percentage_grand = (lastElement_TotalUnclaimed/lastElement_TotalAvail) * 100;
+                    game.setPercentage_grand(percentage_grand);
+
                     MainActivity.gameList.add(game);
                     MainActivity.allGameList.add(game);
                     //ListOfAllGamesHolder.allGameList.add(game);

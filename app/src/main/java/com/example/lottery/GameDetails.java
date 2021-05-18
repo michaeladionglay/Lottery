@@ -12,6 +12,8 @@ public class GameDetails extends AppCompatActivity {
     private TextView gameName;
     private TextView gamePrice;
     private TextView gameNumber;
+    private TextView gamePercentageAll;
+    private TextView gamePercentageGrand;
     private TableLayout prizeTable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,8 @@ public class GameDetails extends AppCompatActivity {
         gamePrice = findViewById(R.id.gamePriceTextEntry);
         gameNumber = findViewById(R.id.gameNumberTextEntry);
         prizeTable = findViewById(R.id.prizeTable);
+        gamePercentageAll = findViewById(R.id.percentage_all_entry);
+        gamePercentageGrand = findViewById(R.id.percentage_grand_entry);
 
         Intent intent = getIntent();
         Game game = (Game)intent.getSerializableExtra("GameDetails");
@@ -29,6 +33,10 @@ public class GameDetails extends AppCompatActivity {
         gameName.setText(game.Name);
         gamePrice.setText(game.Price);
         gameNumber.setText(Conversion.removeTrailingZeros(game.GameNumber.toString()));
+        gamePercentageAll.setText(String.format("%.2f%%", game.getPercentage_all()));
+        gamePercentageGrand.setText(String.format("%.2f%%", game.getPercentage_grand()));
+
+
         int rowCount = 0;
 
         for (Double prizevalue : game.getPrizeValues()) {
