@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         long date = System.currentTimeMillis();
         SimpleDateFormat sdf = new SimpleDateFormat("MMM MM dd, yyyy h:mm a");
         String dateString = sdf.format(date);
-        dateTime.setText(dateString);
+        dateTime.setText("Last updated: " + dateString);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 TextView dateTime = findViewById(R.id.dateTime);
                 SimpleDateFormat sdf = new SimpleDateFormat("MMM MM dd, yyyy h:mm a");
                 String dateString = sdf.format(date);
-                dateTime.setText(dateString);
+                dateTime.setText("Last updated: " + dateString);
                 return true;
 
             case R.id.menu_1_dollar:
