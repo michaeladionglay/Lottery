@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ticket_list_row">
+    tools:context=".GameDetails">
 
     <TextView
         android:id="@+id/ticket_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:autoText="false"
         android:gravity="center_horizontal|center_vertical"

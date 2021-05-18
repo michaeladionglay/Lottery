@@ -33,8 +33,8 @@ public class GameDetails extends AppCompatActivity {
         gameName.setText(game.Name);
         gamePrice.setText(game.Price);
         gameNumber.setText(Conversion.removeTrailingZeros(game.GameNumber.toString()));
-        gamePercentageAll.setText(String.format("%.2f%%", game.getPercentage_all()));
-        gamePercentageGrand.setText(String.format("%.2f%%", game.getPercentage_grand()));
+        gamePercentageAll.setText(String.format("%.0f", game.getPercentage_all()) + "%");
+        gamePercentageGrand.setText(String.format("%.0f", game.getPercentage_grand()) + "%");
 
 
         int rowCount = 0;
@@ -47,7 +47,7 @@ public class GameDetails extends AppCompatActivity {
         for (Double prizeValue : game.getPrizeValues()) {
             TableRow prizeTableRow = (TableRow) prizeTable.getChildAt(prizeValues);
             TextView cell = (TextView) prizeTableRow.getChildAt(0);
-            cell.setText(Conversion.removeTrailingZeros(prizeValue.toString()));
+            cell.setText("$" + Conversion.removeTrailingZeros(prizeValue.toString()));
             prizeValues--;
         }
 
