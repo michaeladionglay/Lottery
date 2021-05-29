@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     public static GamesAdapter mAdapter;
     public static String X;
 
+    SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +47,27 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         new getAllGames().execute();
 
         long date = System.currentTimeMillis();
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM MM dd, yyyy h:mm a");
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy h:mm a");
         String dateString = sdf.format(date);
         dateTime.setText("Last updated: " + dateString);
+
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                new getAllGames().execute();
+
+                long date = System.currentTimeMillis();
+                TextView dateTime = findViewById(R.id.dateTime);
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy h:mm a");
+                String dateString = sdf.format(date);
+                dateTime.setText("Last updated: " + dateString);
+
+                mAdapter.notifyDataSetChanged();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     @Override
@@ -78,7 +99,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
                 long date = System.currentTimeMillis();
                 TextView dateTime = findViewById(R.id.dateTime);
-                SimpleDateFormat sdf = new SimpleDateFormat("MMM MM dd, yyyy h:mm a");
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy h:mm a");
                 String dateString = sdf.format(date);
                 dateTime.setText("Last updated: " + dateString);
                 return true;
