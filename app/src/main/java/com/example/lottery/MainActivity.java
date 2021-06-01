@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Utilities.setupHomeIndicator(getSupportActionBar());
 
         recyclerView = findViewById(R.id.recycler);
         // Data to recyclerview adapter
@@ -158,6 +159,10 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 mAdapter = new GamesAdapter(gameList, this);
                 recyclerView.setAdapter(mAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                return true;
+
+            case android.R.id.home:
+                finish();
                 return true;
 
             default:

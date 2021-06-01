@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ public class GameDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_details);
+        Utilities.setupHomeIndicator(getSupportActionBar());
 
         gameName = findViewById(R.id.gameName);
         gamePrice = findViewById(R.id.gamePriceTextEntry);
@@ -66,5 +68,10 @@ public class GameDetails extends AppCompatActivity {
             cell.setText(Conversion.removeTrailingZeros(totalUnclaimedPrizes.toString()));
             unclaimed--;
         }
+    }
+
+    @Override public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
     }
 }
