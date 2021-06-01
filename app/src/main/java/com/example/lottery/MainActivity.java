@@ -152,6 +152,14 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 return true;
 
+            case R.id.menu_grand:
+                X = "grand";
+                gameList = new getGameType().filterGames();
+                mAdapter = new GamesAdapter(gameList, this);
+                recyclerView.setAdapter(mAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
