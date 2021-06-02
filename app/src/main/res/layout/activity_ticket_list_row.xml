@@ -4,29 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".GameDetails">
-
-    <TextView
+    tools:context=".GamesAdapter">
+        <TextView
         android:id="@+id/ticket_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="5dp"
         android:autoText="false"
         android:gravity="center_horizontal|center_vertical"
         android:text="Ticket Name"
-        android:textSize="26sp"
+        android:textColor="@color/textDark"
+        android:textSize="24sp"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/separator"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/separator2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -37,38 +37,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_begin="210dp" />
 
     <TextView
         android:id="@+id/winning_tickets"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:gravity="center"
-        android:text="% Winning Tickets Remaining"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="left|bottom"
+        android:text="% Winning Tickets"
+        android:textColor="@color/textDark"
         android:textSize="14sp"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/grand_prize"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ticket_name"
+        app:layout_constraintStart_toEndOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/grand_prize"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="% Grand Prizes Remaining"
+        android:gravity="left|top"
+        android:text="% Grand Prize Tickets"
+        android:textColor="@color/textDark"
         android:textSize="14sp"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ticket_name"
+        app:layout_constraintStart_toEndOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/winning_tickets" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

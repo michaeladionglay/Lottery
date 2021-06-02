@@ -24,11 +24,11 @@
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="65dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/gameNameLabel">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
@@ -45,9 +45,47 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateTime" />
+            app:layout_constraintTop_toBottomOf="@id/gameNameLabel" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="210dp" />
+
+    <TextView
+        android:id="@+id/gameNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Ticket Name"
+        android:textStyle="bold"
+        android:gravity="center_horizontal|center_vertical"
+        android:textColor="@color/textDark"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/dateTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"/>
+
+    <TextView
+        android:id="@+id/gamePercentagesLabel"
+        android:layout_width="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_height="wrap_content"
+        android:text="Prizes Available"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:textColor="@color/textDark"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@id/dateTime"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
