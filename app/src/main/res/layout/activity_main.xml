@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#001683"
     tools:context=".MainActivity">
 
     <TextView
@@ -15,7 +16,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:gravity="center"
         android:text="Last updated:"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -60,32 +63,32 @@
         android:id="@+id/gameNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="5dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="5dp"
-        android:text="Ticket Name"
-        android:textStyle="bold"
         android:gravity="center_horizontal|center_vertical"
-        android:textColor="@color/textDark"
+        android:text="Ticket Name"
+        android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/dateTime"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"/>
+        app:layout_constraintTop_toBottomOf="@id/dateTime" />
 
     <TextView
         android:id="@+id/gamePercentagesLabel"
         android:layout_width="0dp"
-        android:layout_marginLeft="8dp"
         android:layout_height="wrap_content"
-        android:text="Prizes Available"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="5dp"
-        android:textStyle="bold"
         android:gravity="left"
-        android:textColor="@color/textDark"
+        android:text="Prizes Available"
+        android:textColor="@color/white"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@id/dateTime"/>
+        app:layout_constraintTop_toBottomOf="@id/dateTime" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

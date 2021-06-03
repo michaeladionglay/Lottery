@@ -1,5 +1,6 @@
 package com.example.lottery;
 
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +39,13 @@ public class GamesAdapter extends RecyclerView.Adapter<MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         Game game = gameList.get(position);
+
+        if (position %2 == 1){
+            holder.itemView.setBackgroundColor(Color.parseColor("#72ab59"));//Blue
+        }
+        else{
+            holder.itemView.setBackgroundColor(Color.parseColor("#FFEFC764"));//Gold
+        }
 
         holder.ticketName.setText(game.getName());
         holder.allprizesRemain.setText(String.format("%.0f",game.getPercentage_all())+"% Winning Tickets");

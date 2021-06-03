@@ -5,27 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".GamesAdapter">
-        <TextView
+
+    <TextView
         android:id="@+id/ticket_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="5dp"
+        android:layout_marginLeft="8dp"
         android:autoText="false"
         android:gravity="center_horizontal|center_vertical"
         android:text="Ticket Name"
         android:textColor="@color/textDark"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:background="#001683"
         android:src="@drawable/separator2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,12 +46,13 @@
         android:id="@+id/winning_tickets"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="6dp"
         android:gravity="left|bottom"
         android:text="% Winning Tickets"
         android:textColor="@color/textDark"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/grand_prize"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,6 +69,7 @@
         android:text="% Grand Prize Tickets"
         android:textColor="@color/textDark"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
