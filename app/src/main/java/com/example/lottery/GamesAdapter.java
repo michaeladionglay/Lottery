@@ -41,14 +41,14 @@ public class GamesAdapter extends RecyclerView.Adapter<MyViewHolder> {
         Game game = gameList.get(position);
 
         if (position %2 == 1){
-            holder.itemView.setBackgroundColor(Color.parseColor("#72ab59"));//Blue
+            holder.itemView.setBackgroundColor(Color.parseColor("#72ab59"));//gREEN
         }
         else{
-            holder.itemView.setBackgroundColor(Color.parseColor("#FFEFC764"));//Gold
+            holder.itemView.setBackgroundColor(Color.parseColor("#EFC764"));//Gold
         }
 
         holder.ticketName.setText(game.getName());
-        holder.allprizesRemain.setText(String.format("%.0f",game.getPercentage_all())+"% Winning Tickets");
+        holder.allprizesRemain.setText(String.format("%.0f",game.getPercentage_all())+"% Winning Tickets Remain");
         holder.grandprizeRemain.setText(String.format("%.0f",game.getPercentage_grand())+"% Grand Prize Tickets");
         //holder.empId.setText(String.format(Locale.getDefault(), "%d", employee.getEmpId()));
         //holder.department.setText(employee.getDepartment());

@@ -3,9 +3,10 @@
     <color name="textDark">#555762</color>
     <color name="textMedium">#797b89</color>
     <color name="textLight">#a1a2ac</color>
-    <color name="darkBlue">#091AD7</color>
+    <color name="darkBlue">#001683</color>
     <color name="darkGreen">#008f10</color>
-    <color name="lightGreen">#72ab59</color>
+    <color name="mainScreenGreen">#72ab59</color>
+    <color name="mainScreenYellow">#EFC764</color>
     <color name="grandPrizeOrange">#FF8C00</color>
     <color name="midPrizeOrange">#FFD156</color>
     <color name="lowPrizeOrange">#ffe399</color>
